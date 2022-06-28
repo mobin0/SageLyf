@@ -10,14 +10,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post('/testData', function (req, res) {
 // console.log("REUSLT", JSON.parse(req.body.courseItem))
+  console.log("test data");
+// fs.writeFile("./test.json", JSON.stringify(req.body), 'utf8', function (err) {
+//     if (err) {
+//         return console.log(err);
+//     }
 
-fs.writeFile("./test.json", JSON.stringify(req.body), 'utf8', function (err) {
-    if (err) {
-        return console.log(err);
-    }
-
-    console.log("The file was saved!");
-});
+//     console.log("The file was saved!");
+// });
 
 
 

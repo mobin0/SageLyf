@@ -1,12 +1,9 @@
-
 import React from "react";
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 // import CourseContent from './components/CourseContent.jsx';
 // import courseData from './tests/test.js';
 import _ from "lodash";
-
-
 
 class App extends React.Component {
   constructor(props) {
@@ -17,12 +14,12 @@ class App extends React.Component {
     let menuBar = [{"Designs": [], "Clothing": [], "Blog":{"Stories":[], "Poetry": [], "Songs": ""}}]
     this.state = {
       news: news,
-      newItemSetStates: [],
+      newsEntryState: [],
       expanded: false,
       newsCount: 0,
       menuBar: menuBar
     };
-    this.updateNewsStates = this.updateNewsStates.bind(this);
+    this.updateNewsStates = this.updatedNewsStates.bind(this);
     this.expandClickHandler = this.expandClickHandler.bind(this);
 
 
@@ -50,31 +47,31 @@ class App extends React.Component {
   }
 
   setMinutes() {
-    let minutes = this.state.totalLectureDuration;
-    let hours = Math.floor(minutes/60);
-    minutes = minutes - hours*60;
-    console.log(minutes);
-    this.state.minutes = minutes < 10 ? "0"+minutes : "" + minutes;
-    this.state.hours=  hours < 10 ? "0"+hours : "" + hours;
+    // let minutes = this.state.totalLectureDuration;
+    // let hours = Math.floor(minutes/60);
+    // minutes = minutes - hours*60;
+    // console.log(minutes);
+    // this.state.minutes = minutes < 10 ? "0"+minutes : "" + minutes;
+    // this.state.hours=  hours < 10 ? "0"+hours : "" + hours;
   }
 
 
 
   componentDidMount(){
-    let currLectureCount = _.reduce(this.state.courseData,
+    let currNewsCount = _.reduce(this.state.news,
       (accum, curr) => {
         // console.log(curr.entries.length, accum)
-        return accum + curr.entries.length;
+        return accum + curr.number;
       },0);
 
-    this.setState({lectureCount: currLectureCount});
+    this.setState({newsCount: currNewsCount});
   }
 
-  updateCourseItemStates(setState) {
-    this.state.courseItemSetStates.push(setState);
+  updatedNewsStates(setState) {
+    this.state.newsEntryStates.push(setState);
   }
   expandClickHandler() {
-    let setStates = this.state.courseItemSetStates;
+    let setStates = this.state.newsEntryState;
     
     for(let stateSetter of setStates){
       stateSetter((prevState, props)=>{
@@ -101,15 +98,9 @@ class App extends React.Component {
     return (
       <div className = "app-container">
         <div className = "app-header">
-          <span className = "header-title"> SageLyf </span>
-          <span className = "expand" onClick = {this.expandClickHandler}> {this.state.expanded? "Collapse All" : "Expand All"} </span>
-          <span className = "total-lecture-length">
-            {this.state.lectureCount} lectures </span>
-          <span className = "total-lecture-duration">
-            {this.state.hours + ":" + this.state.minutes}</span>
-        </div>
-        <div className= "course-content-container">
-          <CourseContent updateCourseItemStates = {this.updateCourseItemStates} courseData = {this.state.courseData}/>
+          <span className = "header-title" > SageLyf </span>
+          <br></br>
+          <div className = "testMessage">Bless</div> 
         </div>
       </div>
     );

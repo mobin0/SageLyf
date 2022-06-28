@@ -1,8 +1,8 @@
 {
-  "homepage": "http://mobin0.github.io/Course-Content-Service-Udeyou",
-  "name": "course-content-server-mobin0",
+  "homepage": "http://mobin0.github.io/SageLyf",
+  "name": "SageLyf",
   "version": "1.0.0",
-  "description": "Provides a service to access course items from the databse",
+  "description": "SageLyf Website",
   "author": "Mobin Skaria",
   "license": "ISC",
   "engines": {
